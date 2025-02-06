@@ -81,9 +81,21 @@ const formattedEndDate = computed(() => dayjs(props.data.end_datetime).format('Y
 const duration = computed(() => {
   const start = dayjs(props.data.start_date)
   const end = dayjs(props.data.end_datetime)
-  const diffMinutes = end.diff(start, 'minute')
+
+  if (!start.isValid() || !end.isValid()) {
+    return '00:00:00' // Return default if invalid dates
+  }
+
+  let diffMinutes = end.diff(start, 'minute')
+
+  // Prevent negative durations
+  if (diffMinutes < 0) {
+    diffMinutes = 0
+  }
+
   const hours = Math.floor(diffMinutes / 60)
   const minutes = diffMinutes % 60
+
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`
 })
 </script>

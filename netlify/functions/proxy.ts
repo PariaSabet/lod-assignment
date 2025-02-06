@@ -16,17 +16,17 @@ if (!admin.apps.length) {
 }
 
 export const handler: Handler = async (event) => {
-  //   if (event.httpMethod === 'OPTIONS') {
-  //     return {
-  //       statusCode: 200,
-  //       headers: {
-  //         'Access-Control-Allow-Origin': '*',
-  //         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  //         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  //       },
-  //       body: '',
-  //     }
-  //   }
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      },
+      body: '',
+    }
+  }
 
   const path = event.path.replace('/.netlify/functions/proxy', '')
   const queryString = event.rawQuery ? `?${event.rawQuery}` : ''
