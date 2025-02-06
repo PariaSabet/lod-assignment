@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input:-webkit-autofill {
+  background-color: #212121 !important; /* Match dark input */
+  color: white !important;
+  box-shadow: 0 0 0px 1000px #212121 inset !important; /* Ensures full background fill */
+}
+
+input:-webkit-autofill::first-line {
+  color: white !important; /* Ensures text remains visible */
+}

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { auth } from '@/services/firebase'
-import { onAuthStateChanged, getIdToken } from 'firebase/auth'
+import { onAuthStateChanged, getIdToken, createUserWithEmailAndPassword } from 'firebase/auth'
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(JSON.parse(localStorage.getItem('user')) || null)
@@ -55,11 +55,24 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  const signUp = async (email, password) => {
+    try {
+      // Use createUserWithEmailAndPassword from firebase/auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      user.value = userCredential.user
+      // Handle additional user setup if needed
+    } catch (error) {
+      console.error('Error signing up:', error)
+      throw error
+    }
+  }
+
   return {
     user,
     isAuthenticated,
     idToken,
     updateIdToken,
     logout,
+    signUp,
   }
 })

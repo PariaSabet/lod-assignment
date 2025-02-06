@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardHome from '@/views/DashboardHome.vue'
 import UserLogin from '@/components/auth/UserLogin.vue'
+import UserSignUp from '@/components/auth/UserSignUp.vue'
 import { useAuthStore } from '@/stores/auth'
 
 const routes = [
   { path: '/', component: DashboardHome, meta: { requiresAuth: true } },
   { path: '/login', component: UserLogin },
+  { path: '/signup', component: UserSignUp },
   {
     path: '/logout',
     name: 'logout',

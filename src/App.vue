@@ -13,20 +13,23 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <header class="bg-gray-800 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
+  <div class="bg-[#2e2e2e] min-h-screen text-white flex flex-col">
+    <header
+      v-if="authStore.isAuthenticated"
+      class="p-4 flex items-center justify-between border-b border-zinc-600"
+    >
       <h1 class="text-xl font-bold">Energy Dashboard</h1>
       <nav>
         <button
-          v-if="authStore.isAuthenticated"
           @click="handleLogout"
-          class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
+          class="px-5 py-2.5 bg-[#212121] hover:bg-[#313131] text-white text-md font-medium rounded-md shadow-md transition hover:brightness-110"
         >
           Logout
         </button>
       </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    </header>
+    <main class="flex-1 p-6">
+      <RouterView />
+    </main>
+  </div>
 </template>

@@ -1,69 +1,77 @@
 <template>
-  <div class="max-w-md mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Login</h2>
+  <div class="min-h-screen flex items-center justify-center pb-28">
+    <div class="w-96 p-8 bg-[#151515] rounded-lg shadow-lg">
+      <h2 class="text-2xl font-bold mb-6 text-white text-center">Login</h2>
 
-    <div
-      v-if="error"
-      class="mb-4 p-4 bg-red-50 border-l-4 border-red-500 text-red-700"
-      role="alert"
-    >
-      {{ error }}
-    </div>
-
-    <form @submit.prevent="handleLogin" class="space-y-4">
-      <div>
-        <input
-          v-model="email"
-          type="email"
-          placeholder="Email"
-          required
-          :disabled="isLoading"
-          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100"
-        />
-      </div>
-
-      <div>
-        <input
-          v-model="password"
-          type="password"
-          placeholder="Password"
-          required
-          :disabled="isLoading"
-          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100"
-        />
-      </div>
-
-      <button
-        type="submit"
-        :disabled="isLoading"
-        class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-200 ease-in-out disabled:bg-gray-400 disabled:cursor-not-allowed"
+      <div
+        v-if="error"
+        class="mb-4 p-4 bg-red-500 bg-opacity-20 border-l-4 border-red-500 text-red-400 rounded"
+        role="alert"
       >
-        <span v-if="isLoading" class="flex items-center justify-center">
-          <svg
-            class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"
-            ></circle>
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            ></path>
-          </svg>
-          Logging in...
-        </span>
-        <span v-else>Login</span>
-      </button>
-    </form>
+        {{ error }}
+      </div>
+
+      <form @submit.prevent="handleLogin" class="space-y-4">
+        <div>
+          <input
+            v-model="email"
+            type="email"
+            placeholder="Email"
+            required
+            :disabled="isLoading"
+            class="w-full px-4 py-2 bg-[#212121] text-white border border-[#313131] rounded-md focus:ring-2 focus:ring-[#3B82F6] focus:border-[#3B82F6] disabled:bg-gray-800"
+          />
+        </div>
+
+        <div>
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Password"
+            required
+            :disabled="isLoading"
+            class="w-full px-4 py-2 bg-[#212121] text-white border border-[#313131] rounded-md focus:ring-2 focus:ring-[#3B82F6] focus:border-[#3B82F6] disabled:bg-gray-800"
+          />
+        </div>
+
+        <button
+          type="submit"
+          :disabled="isLoading"
+          class="w-full py-2 px-4 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold rounded-md transition-all disabled:bg-gray-600 disabled:cursor-not-allowed"
+        >
+          <span v-if="isLoading" class="flex items-center justify-center">
+            <svg
+              class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            Logging in...
+          </span>
+          <span v-else>Login</span>
+        </button>
+      </form>
+
+      <div class="mt-4 text-center">
+        <router-link to="/signup" class="text-[#3B82F6] hover:underline">
+          Don't have an account? Sign Up
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -114,3 +122,5 @@ const handleLogin = async () => {
   }
 }
 </script>
+
+<style scoped></style>
