@@ -5,6 +5,12 @@ This project is a web application built using Vue.js, Vite, and Tailwind CSS. It
 The app is hosted on Netlify:
 https://lod-assignment.netlify.app/
 
+
+https://github.com/user-attachments/assets/ec6187eb-6168-409e-8951-f3c56552c6cb
+
+
+
+
 ## Table of Contents
 
 - [Installation](#installation)
